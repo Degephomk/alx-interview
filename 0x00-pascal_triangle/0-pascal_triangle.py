@@ -9,16 +9,24 @@ def pascal_triangle(n):
   Returns:
     A list of lists of integers, where each inner list represents a row in the triangle.
   """
-
-  if n <= 0:
-    return []
-
-  triangle = [[1] for _ in range(n)]
-  for i in range(1, n):
-    for j in range(i + 1):
-      if j == 0 or j == i:
-        triangle[i].append(1)
-      else:
-        triangle[i].append(triangle[i - 1][j - 1] + triangle[i - 1][j])
-
-  return triangle
+ if type(n) is not int:
+        raise TypeError("n must be an integer")
+    triangle = []
+    if n <= 0:
+        return triangle
+    previous = [1]
+    for row_index in range(n):
+        rowlist = []
+        if row_index == 0:
+            rowlist = [1]
+        else:
+            for i in range(row_index + 1):
+                if i == 0:
+                    rowlist.append(0 + previous[i])
+                elif i == (row_index):
+                    rowlist.append(previous[i - 1] + 0)
+                else:
+                    rowlist.append(previous[i - 1] + previous[i])
+        previous = rowlist
+        triangle.append(rowlist)
+    return triangle
