@@ -9,6 +9,7 @@ Returns:
     bool: True if all of the lockboxes can be opened, False otherwise.
 """
 
+
 def canUnlockAll(boxes):
     """
     Determines whether a series of locked boxes can be opened
